@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>首页</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./common.css">
+    <link rel="stylesheet" type="text/css" href="./standard.css">
+    <script src="./js/echarts.min.js"></script>
+</head>
+
+<body>
+<!-- 头-->
+<header>
+    <div class="w1200 h header">
+        <div class="logo">
+            <img src="./img/logo.png">
+        </div>
+        <div class="menu">
+            <div class="menu_item">
+                <i class="iconfont fa fa-home fa-fw  fa-2x"></i>
+                <span>首页</span>
+            </div>
+            <div class="menu_item">
+                <i class="iconfont fa fa-pie-chart fa-fw  fa-2x"></i>
+                <span>数据分析</span>
+            </div>
+            <div class="menu_item">
+                <i class="iconfont fa fa-wpforms ofwpforms fa-fw  fa-2x"></i>
+                <span>数据详情</span>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 头 end -->
+<!--  页面的主体  -->
+<div class="standard_head w1200">
+    <h1>课程评价指标达标率</h1>
+    <div class="time_row">
+        <ul class="quick">
+            <li class='active'>时间</li>
+            <li>今天</li>
+            <li>7天</li>
+            <li>14天</li>
+            <li>30天</li>
+        </ul>  
+    </div>
+    <div class="category">
+        <button>课程负荷</button>
+        <button class="active">课程结构</button>
+    </div>
+    
+    <div class="type">
+        <button>总体数据</button>
+        <button class="active">性别数据</button>
+        <button>年级数据</button>
+    </div>
+</div>
+
+<div class="container w1200">
+    <div class="row">
+        <div class="item item1 ">
+            <div class="title title1">
+                男生课堂负荷达标比例
+            </div>
+            <div class="chart1" id='chart1'>
+            </div>
+            <div class="title title2">
+                女生课堂负荷达标比例
+            </div>
+            <div class="chart2" id='chart2'>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+<!-- 脚本 -->
+<script type="text/javascript">
+    window.onload = () => {
+        main()
+    }
+    
+    function main() {
+        //11111
+        chart1Option = {
+            title: {
+                text: "84%",
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    color: "#fff",
+                    fontSize: 30,
+                    fontWeight: 'normal'
+                },
+                subtextStyle: {
+                    color: "rgba(255,255,255,.45)",
+                    fontSize: 14,
+                    fontWeight: 'normal'
+                }
+            },
+            legend: {
+                x: 'center',
+                y: 'bottom',
+                data: ['rose3', 'rose5', 'rose6', 'rose7', 'rose8']
+            },
+            calculable: true,
+            series: [
+
+                {
+                    name: '面积模式',
+                    type: 'pie',
+                    radius: [0, 110],
+                    center: ['50%', '40%'],
+                    data: [{
+                            value: 34,
+                            name: '吴际帅\n牛亚莉',
+                            itemStyle: {
+
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                    offset: 0,
+                                    color: '#ff8834'
+                                }, {
+                                    offset: 1,
+                                    color: '#ff8834'
+                                }])
+                            },
+                            label: {
+                                color: "#fff",
+                                fontSize: 14,
+                                formatter: '达标\n{a|34}个',
+                                rich: {
+                                    a: {
+                                        color: "#fff",
+                                        fontSize: 14,
+                                        lineHeight: 30
+                                    },
+                                }
+                            }
+                        },
+                        {
+                            value: 52,
+                            name: 'rose2',
+                            itemStyle: {
+                                color: "transparent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    name: '面积模式',
+                    type: 'pie',
+                    radius: [0, 100],
+                    center: ['50%', '40%'],
+                    data: [{
+                            value: 34,
+                            name: '吴际帅\n牛亚莉',
+                            itemStyle: {
+                                color: "transparent"
+                            }
+                        },
+                        {
+                            value: 52,
+                            name: 'rose2',
+                            itemStyle: {
+
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                    offset: 0,
+                                    color: '#fff'
+                                }, {
+                                    offset: 1,
+                                    color: '#fff'
+                                }])
+                            },
+                            label: {
+                                color: "#fff",
+                                fontSize: 14,
+                                formatter: '未达标\n{a|52}个',
+                                rich: {
+                                    a: {
+                                        color: "#fff",
+                                        fontSize: 12,
+                                        lineHeight: 30
+                                    },
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        };
+        var chart1Chart = echarts.init(document.getElementById('chart1'));
+        chart1Chart.setOption(chart1Option);
+        // 1111
+        
+
+               //11111
+        chart2Option = {
+            title: {
+                text: "84%",
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    color: "#fff",
+                    fontSize: 30,
+                    fontWeight: 'normal'
+                },
+                subtextStyle: {
+                    color: "rgba(255,255,255,.45)",
+                    fontSize: 14,
+                    fontWeight: 'normal'
+                }
+            },
+            legend: {
+                x: 'center',
+                y: 'bottom',
+                data: ['rose3', 'rose5', 'rose6', 'rose7', 'rose8']
+            },
+            calculable: true,
+            series: [
+
+                {
+                    name: '面积模式',
+                    type: 'pie',
+                    radius: [85, 105],
+                    center: ['50%', '40%'],
+                    data: [{
+                            value: 34,
+                            name: '吴际帅\n牛亚莉',
+                            itemStyle: {
+
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                    offset: 0,
+                                    color: '#F164D0'
+                                }, {
+                                    offset: 1,
+                                    color: '#F164D0'
+                                }])
+                            },
+                            label: {
+                                color: "#fff",
+                                fontSize: 14,
+                                formatter: '达标\n{a|34}个',
+                                rich: {
+                                    a: {
+                                        color: "#fff",
+                                        fontSize: 14,
+                                        lineHeight: 30
+                                    },
+                                }
+                            }
+                        },
+                        {
+                            value: 52,
+                            name: 'rose2',
+                            itemStyle: {
+                                color: "transparent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    name: '面积模式',
+                    type: 'pie',
+                    radius: [90, 100],
+                    center: ['50%', '40%'],
+                    data: [{
+                            value: 34,
+                            name: '吴际帅\n牛亚莉',
+                            itemStyle: {
+                                color: "transparent"
+                            }
+                        },
+                        {
+                            value: 52,
+                            name: 'rose2',
+                            itemStyle: {
+
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                    offset: 0,
+                                    color: '#fff'
+                                }, {
+                                    offset: 1,
+                                    color: '#fff'
+                                }])
+                            },
+                            label: {
+                                color: "#fff",
+                                fontSize: 14,
+                                formatter: '未达标\n{a|52}个',
+                                rich: {
+                                    a: {
+                                        color: "#fff",
+                                        fontSize: 12,
+                                        lineHeight: 30
+                                    },
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        };
+        var chart2Chart = echarts.init(document.getElementById('chart2'));
+        chart2Chart.setOption(chart2Option);
+        // 1111
+
+    }
+</script>
+</body>
+
+</html>
